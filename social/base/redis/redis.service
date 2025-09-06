@@ -1,0 +1,20 @@
+[Unit]
+Description=Redis data structure server
+Documentation=https://redis.io/documentation
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/docker-entrypoint.sh redis-server
+LimitNOFILE=10032
+NoNewPrivileges=yes
+#OOMScoreAdjust=-900
+#PrivateTmp=yes
+Type=simple
+TimeoutStartSec=60
+TimeoutStopSec=60
+UMask=0077
+WorkingDirectory=/data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+name="consul"
+command="/usr/local/bin/docker-entrypoint.sh"
+command_args="agent -dev -client 0.0.0.0"
+command_background=true
+# don't set command_user here, docker-entrypoint will switch to the consul user
+pidfile="/run/rc_${RC_SVCNAME}.pid"
+directory="/consul"
+
+depend() {
+  after *
+}

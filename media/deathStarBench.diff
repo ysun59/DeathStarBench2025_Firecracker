@@ -1,0 +1,96 @@
+diff --git a/mediaMicroservices/scripts/register_movies.sh b/mediaMicroservices/scripts/register_movies.sh
+index ae2a6eb..002f851 100755
+--- a/mediaMicroservices/scripts/register_movies.sh
++++ b/mediaMicroservices/scripts/register_movies.sh
+@@ -1,6 +1,8 @@
+ #!/usr/bin/env bash
+ 
++IP=${1:-127.0.0.1}
++
+ for i in {1..1000}; do
+   curl -d "title=title_"$i"&movie_id=movie_id_"$i \
+-      http://127.0.0.1:8080/wrk2-api/movie/register
+-done
+\ No newline at end of file
++      http://$IP:8080/wrk2-api/movie/register
++done
+diff --git a/mediaMicroservices/scripts/register_users.sh b/mediaMicroservices/scripts/register_users.sh
+index bdc5e51..23bcd61 100755
+--- a/mediaMicroservices/scripts/register_users.sh
++++ b/mediaMicroservices/scripts/register_users.sh
+@@ -1,6 +1,8 @@
+ #!/usr/bin/env bash
+ 
++IP=${1:-127.0.0.1}
++
+ for i in {1..1000}; do
+   curl -d "first_name=first_name_"$i"&last_name=last_name_"$i"&username=username_"$i"&password=password_"$i \
+-      http://127.0.0.1:8080/wrk2-api/user/register
+-done
+\ No newline at end of file
++      http://$IP:8080/wrk2-api/user/register
++done
+diff --git a/mediaMicroservices/src/UniqueIdService/UniqueIdHandler.h b/mediaMicroservices/src/UniqueIdService/UniqueIdHandler.h
+index 1b7d050..3a473ad 100644
+--- a/mediaMicroservices/src/UniqueIdService/UniqueIdHandler.h
++++ b/mediaMicroservices/src/UniqueIdService/UniqueIdHandler.h
+@@ -27,14 +27,16 @@ namespace media_service {
+ 
+ using std::chrono::milliseconds;
+ using std::chrono::duration_cast;
+-using std::chrono::system_clock;
++using std::chrono::steady_clock;
+ 
+ static int64_t current_timestamp = -1;
+ static int counter = 0;
+ 
+ static int GetCounter(int64_t timestamp) {
+   if (current_timestamp > timestamp) {
+-    LOG(fatal) << "Timestamps are not incremental.";
++    LOG(fatal) << "Timestamps are not incremental." <<
++        " Current timestamp: " << current_timestamp <<
++        ", next timestamp: " << timestamp;
+     exit(EXIT_FAILURE);
+   }
+   if (current_timestamp == timestamp) {
+@@ -87,7 +89,7 @@ void UniqueIdHandler::UploadUniqueId(
+ 
+   _thread_lock->lock();
+   int64_t timestamp = duration_cast<milliseconds>(
+-      system_clock::now().time_since_epoch()).count() - CUSTOM_EPOCH;
++      steady_clock::now().time_since_epoch()).count();
+   int counter = GetCounter(timestamp);
+   _thread_lock->unlock();
+ 
+diff --git a/mediaMicroservices/src/UserService/UserHandler.h b/mediaMicroservices/src/UserService/UserHandler.h
+index 7640e5e..8f2a262 100644
+--- a/mediaMicroservices/src/UserService/UserHandler.h
++++ b/mediaMicroservices/src/UserService/UserHandler.h
+@@ -33,6 +33,7 @@ namespace media_service {
+ using std::chrono::milliseconds;
+ using std::chrono::duration_cast;
+ using std::chrono::system_clock;
++using std::chrono::steady_clock;
+ //using namespace jwt::params;
+ 
+ static int64_t current_timestamp = -1;
+@@ -40,7 +41,9 @@ static int counter = 0;
+ 
+ static int GetCounter(int64_t timestamp) {
+   if (current_timestamp > timestamp) {
+-    LOG(fatal) << "Timestamps are not incremental.";
++    LOG(fatal) << "Timestamps are not incremental." <<
++        " Current timestamp: " << current_timestamp <<
++        ", next timestamp: " << timestamp;
+     exit(EXIT_FAILURE);
+   }
+   if (current_timestamp == timestamp) {
+@@ -151,7 +154,7 @@ void UserHandler::RegisterUser(
+ 
+   _thread_lock->lock();
+   int64_t timestamp = duration_cast<milliseconds>(
+-      system_clock::now().time_since_epoch()).count() - CUSTOM_EPOCH;
++      steady_clock::now().time_since_epoch()).count();
+   int counter = GetCounter(timestamp);
+   _thread_lock->unlock();
+ 

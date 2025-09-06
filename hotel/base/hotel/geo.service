@@ -1,0 +1,11 @@
+[Unit]
+Description=Geo Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/workspace
+ExecStart=/go/bin/geo
+
+[Install]
+WantedBy=multi-user.target

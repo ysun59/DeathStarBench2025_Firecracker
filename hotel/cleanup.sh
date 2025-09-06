@@ -1,0 +1,5 @@
+rm -rf 'consul' 'jaeger' \
+  'frontend' 'profile' 'search' 'geo' 'rate' 'review' 'attractions' 'recommendation' 'user' 'reservation' \
+  'memcached-rate' 'memcached-review' 'memcached-profile' 'memcached-reserve' \
+  'mongodb-geo' 'mongodb-profile' 'mongodb-rate' 'mongodb-review' 'mongodb-attractions' \
+  'mongodb-recommendation' 'mongodb-reservation' 'mongodb-user'

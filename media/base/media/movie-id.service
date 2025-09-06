@@ -1,0 +1,14 @@
+[Unit]
+Description=Media Movie Id Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/media-microservices
+ExecStart=/usr/local/bin/MovieIdService
+TimeoutStartSec=60
+TimeoutStopSec=60
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

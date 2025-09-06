@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+
+description="Mount devpts for pseudo-terminal support"
+
+depend() {
+    need devfs
+    before localmount
+}
+
+start() {
+    ebegin "Mounting devpts"
+    mkdir -p /dev/pts
+    mountpoint -q /dev/pts || mount -t devpts -o gid=5,mode=620 devpts /dev/pts
+    eend $?
+}
+
+stop() {
+    ebegin "Unmounting devpts"
+    umount /dev/pts
+    eend $?
+}

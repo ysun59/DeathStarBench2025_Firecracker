@@ -1,0 +1,11 @@
+[Unit]
+Description=Reservation Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/workspace
+ExecStart=/go/bin/reservation
+
+[Install]
+WantedBy=multi-user.target

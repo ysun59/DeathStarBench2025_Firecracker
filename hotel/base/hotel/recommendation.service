@@ -1,0 +1,11 @@
+[Unit]
+Description=Recommendation Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/workspace
+ExecStart=/go/bin/recommendation
+
+[Install]
+WantedBy=multi-user.target

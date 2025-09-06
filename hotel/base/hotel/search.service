@@ -1,0 +1,11 @@
+[Unit]
+Description=Search Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/workspace
+ExecStart=/go/bin/search
+
+[Install]
+WantedBy=multi-user.target

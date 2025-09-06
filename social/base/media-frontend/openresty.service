@@ -1,0 +1,16 @@
+[Unit]
+Description=Openresty
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
+ExecStart=/usr/local/openresty/bin/openresty -g "daemon off;"
+TimeoutStartSec=60
+TimeoutStopSec=60
+StandardOutput=tty
+StandardError=tty
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

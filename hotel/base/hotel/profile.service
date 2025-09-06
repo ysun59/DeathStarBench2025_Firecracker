@@ -1,0 +1,11 @@
+[Unit]
+Description=Profile Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/workspace
+ExecStart=/go/bin/profile
+
+[Install]
+WantedBy=multi-user.target
