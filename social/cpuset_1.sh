@@ -71,38 +71,38 @@ function setCoreMoreContig(){
 
 
 setCore "user-timeline-redis" "0"
-setCore "social-graph-service" "1"
-setCore "user-memcached" "2"
-setCore "social-graph-redis" "3"
-setCore "media-service" "4"
-setCore "post-storage-memcached" "5"
-setCore "url-shorten-memcached" "6"
-setCore "media-memcached" "7"
-setCore "social-graph-mongodb" "8"
-setCore "user-mongodb" "9"
-setCore "media-mongodb" "10"
-setCore "media-frontend" "11"
-setCore "user-service" "12"
-setCore "unique-id-service" "13"
-setCore "url-shorten-service" "14"
+setCore "social-graph-service" "2"
+setCore "user-memcached" "4"
+setCore "social-graph-redis" "6"
+setCore "media-service" "8"
+setCore "post-storage-memcached" "10"
+setCore "url-shorten-memcached" "12"
+setCore "media-memcached" "14"
+setCore "social-graph-mongodb" "16"
+setCore "user-mongodb" "18"
+setCore "media-mongodb" "20"
+setCore "media-frontend" "22"
+setCore "user-service" "24"
+setCore "unique-id-service" "26"
+setCore "url-shorten-service" "28"
 
-setCore "user-timeline-service" "15"
-setCore "user-mention-service" "16"
-setCoreMoreContig "home-timeline-service" "24,25"
-setCore "jaeger-agent" "17"
-setCore "url-shorten-mongodb" "18"
-setCore "post-storage-mongodb" "19"
-
-
-setCore "home-timeline-redis" "20"
-setCore "text-service" "21"
+setCoreTwo "user-timeline-service" "32,34"
+setCoreTwo "user-mention-service" "36,38"
+setCoreTwo "home-timeline-service" "40,42"
+setCoreTwo "jaeger-agent" "44,46"
+setCoreTwo "url-shorten-mongodb" "48,50"
+setCoreTwo "post-storage-mongodb" "52,54"
 
 
-setCoreMoreContig "post-storage-service" "26,27,28,29,30,31"
-setCoreMoreContig "nginx-thrift" "32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62"
+setCoreTwo "home-timeline-redis" "56,58,60,62"
+setCoreTwo "text-service" "33,35,37,39"
 
-setCore "user-timeline-mongodb" "22"
-setCore "compose-post-service" "23"
+
+setCoreTwo "post-storage-service" "41,43"
+setCoreTwo "nginx-thrift" "45,47,49,51,53,55,57,59"
+
+setCoreTwo "user-timeline-mongodb" "17,19,21,23,25,27,29,31"
+setCoreTwo "compose-post-service" "1,3,5,7,9,11,13,15"
 
 
 

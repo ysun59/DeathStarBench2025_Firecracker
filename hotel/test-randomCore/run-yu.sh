@@ -39,7 +39,7 @@ killall iostat mpstat
 
 
 
-cd /home/yu/hotel
+cd /home/yu/DeathStarBench2025_Firecracker/hotel
 sudo make stop
 make clean
 

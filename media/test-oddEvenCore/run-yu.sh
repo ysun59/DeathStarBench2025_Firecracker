@@ -18,12 +18,17 @@ echo "===================================="
 # let 24 firecrackers, each set to different cores, from core 0-32, 34-52
 sudo make cpuset
 
+sleep 100
 echo "===================================="
-cd /home/yu/DeathStarBench2025/hotelReservation
+cd /home/yu/DeathStarBench2025/mediaMicroservices
+python3 scripts/write_movie_info.py -c datasets/tmdb/casts.json -m datasets/tmdb/movies.json --server_address http://10.10.12.65:8080 && scripts/register_users.sh 10.10.12.65 && scripts/register_movies.sh 10.10.12.65
+
+echo "===================================="
+cd /home/yu/DeathStarBench2025/mediaMicroservices
 sleep 20
 
-echo "wrk's current affinity list: 63"
-taskset -c 63 ../wrk2/wrk -D exp -t 20 -c 60 -d 60 --timeout 5 -L -s ./wrk2/scripts/hotel-reservation/mixed-workload_type_1.lua http://10.10.10.5:5000 -R $1 > "/home/yu/Res/${DEST}/wrk.txt" &
+echo "wrk's current affinity list: 0,1"
+taskset -c 0,1 ../wrk2/wrk -D exp -t 20 -c 60 -d 60 --timeout 5 -L -s ./wrk2/scripts/media-microservices/compose-review.lua http://10.10.12.65:8080/wrk2-api/review/compose -R $1 > "/home/yu/Res/${DEST}/wrk.txt" &
 
 WRK=$!
 #sleep 1.  #warmup
@@ -39,7 +44,8 @@ killall iostat mpstat
 
 
 
-cd /home/yu/DeathStarBench2025_Firecracker/hotel
+cd /home/yu/DeathStarBench2025_Firecracker/media
+
 sudo make stop
 make clean
 

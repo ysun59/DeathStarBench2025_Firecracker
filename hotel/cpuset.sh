@@ -2,15 +2,6 @@
 
 set -e
 
-set_cpu_for_service() {
-  local service_name=$1
-  local cpulist=$2
-
-  PID=`ps aux | grep /tmp/firecracker | grep -v 'grep' | grep $1 | awk {'print $2'}`
-  for pid in $PIDs; do
-    taskset -a -p --cpu-list $cpulist $pid
-  done
-}
 
 #set firecracker's pid's all the threadID to core, setCore vmName coreNum
 #usage example: setCore hotel-reserv-frontend 3

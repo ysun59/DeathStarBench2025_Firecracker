@@ -75,34 +75,34 @@ setCore "social-graph-service" "1"
 setCore "user-memcached" "2"
 setCore "social-graph-redis" "3"
 setCore "media-service" "4"
-setCore "post-storage-memcached" "5"
-setCore "url-shorten-memcached" "6"
-setCore "media-memcached" "7"
-setCore "social-graph-mongodb" "8"
-setCore "user-mongodb" "9"
-setCore "media-mongodb" "10"
-setCore "media-frontend" "11"
-setCore "user-service" "12"
-setCore "unique-id-service" "13"
-setCore "url-shorten-service" "14"
+setCoreMoreContig "post-storage-memcached" "56,57"
+setCore "url-shorten-memcached" "5"
+setCore "media-memcached" "6"
+setCore "social-graph-mongodb" "7"
+setCore "user-mongodb" "8"
+setCore "media-mongodb" "9"
+setCore "media-frontend" "10"
+setCore "user-service" "11"
+setCore "unique-id-service" "12"
+setCore "url-shorten-service" "13"
 
-setCore "user-timeline-service" "15"
-setCore "user-mention-service" "16"
-setCoreMoreContig "home-timeline-service" "24,25"
-setCore "jaeger-agent" "17"
-setCore "url-shorten-mongodb" "18"
-setCore "post-storage-mongodb" "19"
-
-
-setCore "home-timeline-redis" "20"
-setCore "text-service" "21"
+setCoreMoreContig "user-timeline-service" "58,59,60"
+setCore "user-mention-service" "14"
+setCore "home-timeline-service" "15"
+setCore "jaeger-agent" "16"
+setCore "url-shorten-mongodb" "17"
+setCore "post-storage-mongodb" "18"
 
 
-setCoreMoreContig "post-storage-service" "26,27,28,29,30,31"
-setCoreMoreContig "nginx-thrift" "32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62"
+setCore "home-timeline-redis" "19"
+setCore "text-service" "20"
 
-setCore "user-timeline-mongodb" "22"
-setCore "compose-post-service" "23"
+
+setCoreMoreContig "post-storage-service" "22,23,24,25,26,27,28,29,30,31"
+setCoreMoreContig "nginx-thrift" "32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55"
+
+setCore "user-timeline-mongodb" "21"
+setCore "compose-post-service" "62"
 
 
 
