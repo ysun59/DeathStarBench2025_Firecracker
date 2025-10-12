@@ -122,12 +122,12 @@ cd /home/yu/DeathStarBench2025_Firecracker/social/test-oddEvenCore
 ```bash
 cd /home/yu/DeathStarBench2025_Firecracker/social/test-randomCore
 
-# Case 1: cpuset optimized for Compose Posts
+# Case 1: random (cpus) for Compose Posts
 ./run-yu.sh 1000 1
 
-# Case 2: cpuset optimized for Read Home Timelines
+# Case 2: random (cpus) for Read Home Timelines
 ./run-yu.sh 1000 2
 
-# Case 3: cpuset optimized for Read User Timelines
+# Case 3: random (cpus) for Read User Timelines
 ./run-yu-3.sh 1000
 ```
