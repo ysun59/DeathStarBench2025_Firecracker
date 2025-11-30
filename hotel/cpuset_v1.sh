@@ -84,23 +84,23 @@ setCore "memcached-rate" "10"
 setCore "memcached-review" "30"
 setCore "memcached-profile" "12"
 # #5
-setCore "memcached-reserve" "9"
+setCoreTwo "memcached-reserve" "9,11"
 
 setCore "jaeger" "8"
 setCore "consul" "0"
 
 # # 7
-setCoreTwo "frontend" "13,15"
+setCoreTwo "frontend" "13,15,17,19"
 # # 5
-setCore "search" "5"
+setCoreTwo "search" "5,7"
 setCore "firecracker-attractions" "28"
 setCore "firecracker-geo" "2"
 setCore "firecracker-recommendation" "4"
 setCore "firecracker-user" "6"
 # 5
-setCore "firecracker-profile" "1"
+setCoreTwo "firecracker-profile" "1,3"
 # 9 (6)
-setCoreTwo "firecracker-rate" "21,23,25"
+setCoreTwo "firecracker-rate" "21,23,25,27,29,31"
 # 21(18)
-setCoreMoreContig "firecracker-reservation" "35,36,37,38,39,40"
+setCoreMoreContig "firecracker-reservation" "35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52"
 setCore "firecracker-review" "26"
